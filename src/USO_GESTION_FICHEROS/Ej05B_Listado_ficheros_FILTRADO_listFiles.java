@@ -12,38 +12,36 @@ import java.io.FilenameFilter;
  *
  * @author bau
  */
-public class Ej05B_Listado_ficheros_FILTRADO implements FilenameFilter {
+public class Ej05B_Listado_ficheros_FILTRADO_listFiles{
 
     String extension;
 
     // Constructor 
-    Ej05B_Listado_ficheros_FILTRADO(String extension) {
+    Ej05B_Listado_ficheros_FILTRADO_listFiles(String extension) {
         this.extension = extension;
     }
 
-    public boolean accept(File dir, String name) {
-        return name.endsWith(extension);
-    }
+//    public boolean accept(File dir, String name) {
+//        return name.endsWith(extension);
+//    }
 
     public static void main(String[] args) {
         try {
             // Obtendremos el listado de los archivos de ese directorio
-            File fichero = new File("D:\\AD_Presencial\\_CURSO2223\\UD01_AccesoFicheros\\Contenidos");
-            String[] listadeArchivos = fichero.list();
+            File fichero = new File("D:\\");
 
-            // Filtraremos por la extension
-            listadeArchivos = fichero.list(new Filtro(".pdf"));
+            // Obtenemos los Files filtrado por extension
+            File[] listaFiles = fichero.listFiles(new Filtro(".pdf"));
 
             // Comprobamos el número de archivos en el listado
-            int numarchivos = listadeArchivos.length;
+            int numarchivos = listaFiles.length;
             // Si no hay ninguno lo avisamos por consola
             if (numarchivos < 1) {
                 System.out.println("No hay archivos que listar");
             } // Y si hay, escribimos su nombre por consola.
             else {
-                for (int conta = 0; conta < listadeArchivos.length;
-                        conta++) {
-                    System.out.println(listadeArchivos[conta]);
+                for (File f: listaFiles) {
+                    System.out.println(f);
                 }
             }
         } catch (Exception ex) {
