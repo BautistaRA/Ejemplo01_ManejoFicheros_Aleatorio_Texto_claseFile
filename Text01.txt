@@ -1,0 +1,1 @@
+Escritura de caracteres en fichero.
